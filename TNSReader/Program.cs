@@ -5,7 +5,7 @@
 * Date:             12/21/18
 * Current Version:  0.1
 * Developed in:     Visual Studio 2017
-* Coded in:         C 7.0
+* Coded in:         C# 7.0
 * App Envioronment: Windows 10 Pro (V1809)
 * 
 * Change Log:
@@ -119,9 +119,8 @@ namespace TNSReader
         public static string MakeSearchQuery()
         {
             //Returns a url string for querying the TNS website
-
+ 
             NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
-            queryString["format"] = "tsv";
             queryString["format"] = "tsv";
 
             queryString["name"] = "";
@@ -162,8 +161,8 @@ namespace TNSReader
             queryString["display[classifying_source_group_name]"] = "1";
             queryString["display[discovering_instrument_name]"] = "0";
             queryString["display[classifing_instrument_name]"] = "0";
-            queryString["programs_name]"] = "0";
-            queryString["internal_name]"] = "1";
+            queryString["display[programs_name]"] = "0";
+            queryString["display[internal_name]"] = "1";
             queryString["display[isTNS_AT]"] = "0";
             queryString["display[public]"] = "1";
             queryString["displa[end_pop_period]"] = "0";
