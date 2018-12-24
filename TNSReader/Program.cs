@@ -122,12 +122,9 @@ namespace TNSReader
 
             NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
             queryString["format"] = "tsv";
+            queryString["format"] = "tsv";
+
             queryString["name"] = "";
-            queryString["date_start[date]"] = DateTime.Now.AddDays(-30).ToString("yyyy-MM-dd");
-            queryString["date_end[date]"] = DateTime.Now.ToString("yyyy-MM-dd");
-            queryString["classified_sne"] = "1";
-            queryString["public"] = "all";
-            queryString["unclassified_at"] = "0";
             queryString["name_like"] = "0";
             queryString["isTNS_AT"] = "all";
             queryString["public"] = "all";
@@ -139,7 +136,10 @@ namespace TNSReader
             queryString["coords_unit"] = "arcsec";
             queryString["groupid[]"] = "null";
             queryString["classifier_groupid[]"] = "null";
-            queryString["type[]"] = "null";
+            queryString["objtype[]"] = "null";
+            queryString["AT_objtype[]"] = "null";
+            queryString["date_start[date]"] = DateTime.Now.AddDays(-30).ToString("yyyy-MM-dd");
+            queryString["date_end[date]"] = DateTime.Now.ToString("yyyy-MM-dd");
             queryString["discovery_mag_min"] = "";
             queryString["discovery_mag_max"] = "";
             queryString["internal_name"] = "";
@@ -150,9 +150,11 @@ namespace TNSReader
             queryString["classifier"] = "";
             queryString["discovery_instrument[]"] = "";
             queryString["classification_instrument[]"] = "";
-            queryString["hostname=&associated_groups[]"] = "null";
-            queryString["& ext_catid"] = "";
+            queryString["hostname"] = "";
+            queryString["associated_groups[]"] = "null";
+            queryString["ext_catid"] = "";
             queryString["num_page"] = "50";
+
             queryString["display[redshift]"] = "1";
             queryString["display[hostname]"] = "1";
             queryString["display[host_redshift]"] = "1";
