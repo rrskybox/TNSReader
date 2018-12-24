@@ -104,7 +104,7 @@ namespace TNSReader
                 //filler for Position Reference
                 cbText += "                 ";
                 //Supernova Type
-                cbText += FitFormat(xmlItem.Element("Type").Value.Replace("SN ", ""), 6);
+                cbText += FitFormat(xmlItem.Element("Obj_Type").Value.Replace("SN ", ""), 6);
                 //Supernova Name (as derived from entry name
                 cbText += FitFormat(xmlItem.Element("Name").Value.Replace("SN ", ""), 8);
                 //Discoverer
