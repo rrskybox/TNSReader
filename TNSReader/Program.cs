@@ -108,7 +108,7 @@ namespace TNSReader
                 //Supernova Name (as derived from entry name
                 cbText += FitFormat(xmlItem.Element("Name").Value.Replace("SN ", ""), 8);
                 //Discoverer
-                cbText += FitFormat(xmlItem.Element("Discovering_Groups").Value, 12);
+                //cbText += FitFormat(xmlItem.Element("Discovering_Groups").Value, 12);
                 //New Line
                 cbText += "\n";
                 xml.Add(xmlItem);
