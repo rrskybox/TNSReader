@@ -95,7 +95,8 @@ namespace TNSReader
                 cbText += "       ";  //offsets
                 //Magnitude
                 //cbText += xmlItem.Element("Discovery_Mag").Value.Substring(0, 4).PadRight(8); ;
-                cbText += FitFormat(xmlItem.Element("Discovery_Mag").Value, 8);
+                if (xmlItem.Element("Discovery_Mag") != null) cbText += FitFormat(xmlItem.Element("Discovery_Mag").Value, 8);
+                else cbText += "        ";  //Pad 8
                 //Catelogs, truncated at 15 chars, if any
                 cbText += FitFormat(xmlItem.Element("Ext_catalogs").Value, 15);
                 //Actual RA/Dec location
@@ -181,6 +182,7 @@ namespace TNSReader
         public static string FitFormat(string entry, int slotSize)
         {
             //Returns a string which is the entry truncated to the slot Size, if necessary
+            if (entry == null) return "                    ".Substring(0, slotSize);
             if (entry.Length > slotSize)
                 return entry.Substring(0, slotSize - 1).PadRight(slotSize);
             else
