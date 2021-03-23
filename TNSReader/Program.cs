@@ -11,6 +11,7 @@
 * Change Log:
 * 
 * 12/22/18 Rev 1.0  Release
+* 03/22/21 Rev 1.1  Release
 * 
 */
 
@@ -48,9 +49,18 @@ namespace TNSReader
             const string tsxHead = "SN      Host Galaxy      Date         R.A.    Decl.    Offset   Mag.   Disc. Ref.            SN Position         Posn. Ref.       Type  SN      Discoverer(s)";
 
             string weburl = MakeSearchQuery();
-
+            string contents;
             WebClient client = new WebClient();
-            string contents = client.DownloadString(url_tns_search + MakeSearchQuery());
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = (senderX, certificate, chain, sslPolicyErrors) => { return true; };
+            try
+            {
+                contents = client.DownloadString(url_tns_search + MakeSearchQuery());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Download Error: " + ex.Message);
+                return;
+            };
 
             //Clean up the column headers so they can be used as XML item names
             string[] lines = contents.Split('\n');
@@ -120,7 +130,7 @@ namespace TNSReader
         public static string MakeSearchQuery()
         {
             //Returns a url string for querying the TNS website
- 
+
             NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
             queryString["format"] = "tsv";
 
