@@ -54,7 +54,8 @@ namespace TNSReader
             System.Net.ServicePointManager.ServerCertificateValidationCallback = (senderX, certificate, chain, sslPolicyErrors) => { return true; };
             try
             {
-                contents = client.DownloadString(url_tns_search + MakeSearchQuery());
+                string urlSearch = url_tns_search + MakeSearchQuery();
+                contents = client.DownloadString(urlSearch);
             }
             catch (Exception ex)
             {
@@ -136,7 +137,7 @@ namespace TNSReader
 
             queryString["name"] = "";
             queryString["name_like"] = "0";
-            queryString["isTNS_AT"] = "all";
+            queryString["isTNS_AT"] = "yes";
             queryString["public"] = "all";
             queryString["unclassified_at"] = "0";
             queryString["classified_sne"] = "1";
@@ -144,12 +145,12 @@ namespace TNSReader
             queryString["decl"] = "";
             queryString["radius"] = "";
             queryString["coords_unit"] = "arcsec";
-            queryString["groupid[]"] = "null";
+            queryString[@"groupid[]"] = "null";
             queryString["classifier_groupid[]"] = "null";
             queryString["objtype[]"] = "null";
             queryString["AT_objtype[]"] = "null";
-            queryString["date_start[date]"] = DateTime.Now.AddDays(-30).ToString("yyyy-MM-dd");
-            queryString["date_end[date]"] = DateTime.Now.ToString("yyyy-MM-dd");
+            queryString["discovered_period_value"] = "1";
+            queryString["discovered_period_units"] = "months";
             queryString["discovery_mag_min"] = "";
             queryString["discovery_mag_max"] = "";
             queryString["internal_name"] = "";
@@ -160,7 +161,7 @@ namespace TNSReader
             queryString["classifier"] = "";
             queryString["discovery_instrument[]"] = "";
             queryString["classification_instrument[]"] = "";
-            queryString["hostname"] = "";
+            queryString["hostname"] = "NGC";
             queryString["associated_groups[]"] = "null";
             queryString["ext_catid"] = "";
             queryString["num_page"] = "50";
